@@ -2,15 +2,21 @@
     <br>
     
     <center>
-        <div class="Dlogin">
-            <img src="img/logo-trans.png">
-                <br>
-            <input type="text" placeholder="Nombre">
-                <br>
-                <br>
-            <input type="text" placeholder="Contraseña">
-            <img src="img/botones/boton-ingreso.png" class="Dboton">
-            <img src="img/botones/boton-registrarse.png" class="Dboton">
-        </div>
+        <form action="/login" method="POST">
+            <div class="Dlogin">
+                <img src="img/logo-trans.png">
+                    <br>
+                <input type="text" placeholder="Nombre" id="nombre" name="nombre" required>
+                    <br>
+                    <br>
+                <input type="text" placeholder="Contraseña" id="clave" name="clave" required>
+                <!-- Botón de envío -->
+                <input type="image" src="img/botones/boton-ingreso.png" alt="Ingresar" class="Dboton">
+                <!-- Botón para registro (redirigir a otra página, por ejemplo) -->
+                <a href="/registro">
+                <img src="img/botones/boton-registrarse.png" alt="Registrarse" class="Dboton">
+                </a>
+            </div>
+        </form>
     </center>
 </main>

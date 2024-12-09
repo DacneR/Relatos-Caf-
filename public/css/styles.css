@@ -14,8 +14,15 @@ body {
 .Dboton{
   max-width: 40%;
   margin: 2%;
+  border: none; /* Elimina el borde */
+  background: none; /* Elimina cualquier fondo por defecto */
+  padding: 0; /* Asegúrate de que no haya espacios internos */
+  cursor: pointer; /* Cambia el cursor al pasar el mouse */
 }
 
+.Dboton img {
+  display: block; /* Asegura que no haya márgenes extra alrededor de la imagen */
+}
 .Dboton:hover{
   max-width: 42%;
   margin: 2%;
