@@ -3,10 +3,34 @@ const app = express();
 const port = 3000;
 const favicon = require('serve-favicon');
 const path = require('path');
+require('dotenv').config();
+//Configurar layouts
 const expressLayouts = require('express-ejs-layouts');
 const routes = require('./routers'); // Importar rutas
+//Para conectar con mysql
 const mysql = require('mysql2');
+//Para leer datos desde formularios
 const bodyParser = require('body-parser');
+//Mensaje flash
+const session = require('express-session');
+const flash = require('connect-flash');
+
+
+// Configurar express-session
+app.use(session({
+    secret: process.env.SESSION_SECRET, // Cambia esto a una cadena segura
+    resave: false,
+    saveUninitialized: true
+}));
+
+// Configurar connect-flash
+app.use(flash());
+
+// Middleware para pasar mensajes flash a todas las vistas
+app.use((req, res, next) => {
+    res.locals.mensaje = req.flash('mensaje');
+    next();
+});
 
 // Configurar body-parser para leer datos enviados por POST
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -43,9 +67,11 @@ app.post('/login', (req, res) => {
 
         // Verificar si el usuario existe
         if (results.length > 0) {
-            res.send('¡Login exitoso!');
+            req.flash('mensaje', `¡Bienvenido, ${nombre}!`);
+            res.redirect('/');
         } else {
-            res.send('Credenciales incorrectas');
+            req.flash('mensaje', 'Credenciales incorrectas');
+            res.redirect('/acceso');
         }
     });
 });

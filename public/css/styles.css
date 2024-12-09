@@ -83,6 +83,27 @@ nav a:hover {
   color: #ffd700;
 }
 
+/*estilos para mensaje flash*/
+.mensaje-flash {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #7b3f00; /* Color verde para éxito */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  animation: desaparecer 3s forwards;
+}
+
+@keyframes desaparecer {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
 
 
 /* Estilo para cuando la pantalla es más pequeña */

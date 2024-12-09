@@ -1,4 +1,12 @@
+
+
 <main>
+    <% if (mensaje && mensaje.length > 0) { %>
+        <div class="mensaje-flash">
+            <p><%= mensaje %></p>
+        </div>
+        <% mensaje = null; %>
+    <% } %>
     <section class="hero">
         <h2>El aroma, la historia y la pasión del café</h2>
         <p>Descubre los mejores granos y los relatos que los acompañan.</p>
