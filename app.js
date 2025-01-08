@@ -80,6 +80,12 @@ app.post('/login', (req, res) => {
 app.post('/regis', (req, res) => {
     const { nombre, correo, clave, celular } = req.body;
 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(correo)) {
+        req.flash('mensaje', 'El correo proporcionado no es válido. Por favor, inténtelo de nuevo.');
+        return res.redirect('/registro');
+    }    
+
     // Consulta para verificar usuario y contraseña
     const query = 'SELECT * FROM usuario WHERE nombre = ? AND correo = ?';
     connection.query(query, [nombre, correo], (err, results) => {

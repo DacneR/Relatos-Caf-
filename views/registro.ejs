@@ -1,4 +1,9 @@
-
+<% if (mensaje && mensaje.length > 0) { %>
+    <div class="mensaje-flash">
+        <p><%= mensaje %></p>
+    </div>
+    <% mensaje = null; %>
+<% } %>
     <main>
         <form action="/regis" method="POST">
             <div class="Dform">
