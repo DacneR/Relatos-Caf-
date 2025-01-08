@@ -76,13 +76,48 @@ app.post('/login', (req, res) => {
     });
 });
 
+// Ruta para manejar el registro
+app.post('/regis', (req, res) => {
+    const { nombre, correo, clave, celular } = req.body;
+
+    // Consulta para verificar usuario y contraseña
+    const query = 'SELECT * FROM usuario WHERE nombre = ? AND correo = ?';
+    connection.query(query, [nombre, correo], (err, results) => {
+        if (err) {
+            console.error('Error al ejecutar la consulta: ingresar', err);
+            return res.status(500).send('Error en el servidor');
+        }
+
+        // Verificar si el usuario existe
+        if (results.length > 0) {
+            
+            req.flash('mensaje', `Ya hay una cuenta registrada con el correo, ${correo}!`);
+            res.redirect('/acceso');
+        } else {
+            const query = 'INSERT INTO usuario (idUsuario, nombre, correo, rol, clave, celular) VALUES (null,?, ?,"cliente",?,?)';
+            connection.query(query, [nombre, correo, clave, celular], (err, results) => {
+                if (err) {
+                    req.flash('mensaje', `Algo salió mal`);
+                    console.error('Error al ejecutar la consulta: registrar', err);
+                    return res.status(500).send('Error en el servidor');
+                }
+            
+                req.flash('mensaje', `Registrado correctamente!`);
+                res.redirect('/acceso');
+                
+            });
+        }
+    });
+
+
+});
 
 // Configurar layouts
 app.use(expressLayouts);
 app.set('layout', 'plantilla');
 
 // usar librería favicon
-app.use(favicon(path.join(__dirname, 'public/img/iconos', 'logo.ico')));
+app.use(favicon(path.join(__dirname, 'public/img/iconos', 'icon.ico')));
 
 // Servir archivos estáticos desde la carpeta "public"
 app.use(express.static(path.join(__dirname, 'public')));

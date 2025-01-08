@@ -37,5 +37,12 @@ router.get('/acceso', (req, res) => {
     });
 });
 
+router.get('/registro', (req, res) => {
+    res.render('plantilla', { 
+        titulo: 'Registrarse', 
+        body: 'registro'
+    });
+});
+
 // Exportar el router
 module.exports = router;

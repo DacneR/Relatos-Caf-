@@ -37,15 +37,18 @@ body {
 }
 
 /* Estilo para el div centrado */
-.Dlogin {
+.Dform {
+  font-size: 2.8rem;
+  font-family: 'Times New Roman', serif;
+  margin-bottom: 0.5rem;
   color: #4d1d00;
   padding: 20px 40px;
-  margin-top: 10%;
+  margin-top: 5%;
   margin-left: 35%;
   margin-right: 35%;
   font-size: 1.5rem;
   text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
 }
 
 /* Estilos para la cabecera con navegador*/
@@ -89,14 +92,14 @@ nav a:hover {
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  background-color: #7b3f00; /* Color verde para éxito */
+  background-color: #685744; /* Color verde para éxito */
   color: white;
   padding: 10px 20px;
   border-radius: 5px;
   font-size: 16px;
   z-index: 1000;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  animation: desaparecer 3s forwards;
+  animation: desaparecer 8s forwards;
 }
 
 @keyframes desaparecer {
