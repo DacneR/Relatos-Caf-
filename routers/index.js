@@ -31,9 +31,12 @@ router.get('/contacto', (req, res) => {
 });
 
 router.get('/acceso', (req, res) => {
+    if (req.session.usuario) {
+        return res.redirect('/'); // Redirige a la página principal
+    }
     res.render('plantilla', { 
         titulo: 'Acceder', 
-        body: 'acceder'
+        body: 'acceder' 
     });
 });
 

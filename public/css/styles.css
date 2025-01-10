@@ -52,6 +52,26 @@ body {
 }
 
 /* Estilos para la cabecera con navegador*/
+/* Estilos para el usuario logueado */
+.usuario-logueado {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #000000; /* Consistente con la sección de características */
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Nombre del usuario */
+.usuario-nombre {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: bold;
+  color: #4d1d00; /* Paleta de colores existente */
+}
+
 /* Encabezado */
 header {
   background-color: #7b3f00;

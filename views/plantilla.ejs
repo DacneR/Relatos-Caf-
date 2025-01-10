@@ -19,7 +19,14 @@
             <li><a href="/nosotros">Sobre nosotros</a></li>
             <li><a href="/productos">Productos</a></li>
             <li><a href="/contacto">Contacto</a></li>
-            <li><a href="/acceso">Acceder</a></li>
+            <% if (session && session.usuario) { %>
+              <div class="usuario-logueado">
+                  <span>Usuario: <%= session.usuario.nombre %></span>
+                  <a href="/logout">Cerrar sesión</a>
+              </div>
+            <% } else { %>
+              <a href="/acceso">Iniciar sesión</a>
+            <% } %>
           </ul>
         </nav>
       </header>

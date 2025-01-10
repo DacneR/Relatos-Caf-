@@ -15,13 +15,19 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const flash = require('connect-flash');
 
-
 // Configurar express-session
 app.use(session({
     secret: process.env.SESSION_SECRET, // Cambia esto a una cadena segura
     resave: false,
     saveUninitialized: true
 }));
+
+// Pasar sesión a todas las vistas
+app.use((req, res, next) => {
+    res.locals.session = req.session;
+    next();
+});
+
 
 // Configurar connect-flash
 app.use(flash());
@@ -67,12 +73,28 @@ app.post('/login', (req, res) => {
 
         // Verificar si el usuario existe
         if (results.length > 0) {
+            req.session.usuario = {
+                id: results[0].idUsuario,
+                nombre: results[0].nombre,
+                correo: results[0].correo,
+                celular: results[0].celular,
+            };
             req.flash('mensaje', `¡Bienvenido, ${nombre}!`);
             res.redirect('/');
         } else {
             req.flash('mensaje', 'Credenciales incorrectas');
             res.redirect('/acceso');
         }
+    });
+});
+
+app.get('/logout', (req, res) => {
+    req.session.destroy((err) => {
+        if (err) {
+            console.error('Error al cerrar sesión:', err);
+            return res.status(500).send('Error al cerrar sesión');
+        }
+        res.redirect('/');
     });
 });
 
