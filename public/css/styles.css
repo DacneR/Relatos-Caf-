@@ -36,6 +36,8 @@ body {
   height: calc(100vh - 80px); /* Ajustar para excluir la altura de la cabecera */
 }
 
+
+
 /* Estilo para el div centrado */
 .Dform {
   font-size: 2.8rem;
@@ -177,6 +179,10 @@ input.error {
   border-color: #dc3545; /* Borde rojo para indicar error */
   background-color: #f8d7da; /* Fondo claro rojo */
   color: #721c24; /* Texto en rojo oscuro */
+}
+
+input[type="checkbox"] {
+  margin-right: 5px;
 }
 
 /* Hero Section */

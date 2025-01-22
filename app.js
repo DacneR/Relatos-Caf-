@@ -61,11 +61,11 @@ connection.connect(err => {
 
 // Ruta para manejar el login
 app.post('/login', (req, res) => {
-    const { nombre, clave } = req.body;
+    const { correo, clave, nombre } = req.body;
 
     // Consulta para verificar usuario y contraseña
-    const query = 'SELECT * FROM usuario WHERE nombre = ? AND clave = ?';
-    connection.query(query, [nombre, clave], (err, results) => {
+    const query = 'SELECT * FROM usuario WHERE correo = ? AND clave = ?';
+    connection.query(query, [correo, clave], (err, results) => {
         if (err) {
             console.error('Error al ejecutar la consulta:', err);
             return res.status(500).send('Error en el servidor');
@@ -79,7 +79,7 @@ app.post('/login', (req, res) => {
                 correo: results[0].correo,
                 celular: results[0].celular,
             };
-            req.flash('mensaje', `¡Bienvenido, ${nombre}!`);
+            req.flash('mensaje', `¡Bienvenido, ${results[0].nombre}!`);
             res.redirect('/');
         } else {
             req.flash('mensaje', 'Credenciales incorrectas');
@@ -109,8 +109,8 @@ app.post('/regis', (req, res) => {
     }    
 
     // Consulta para verificar usuario y contraseña
-    const query = 'SELECT * FROM usuario WHERE nombre = ? AND correo = ?';
-    connection.query(query, [nombre, correo], (err, results) => {
+    const query = 'SELECT * FROM usuario WHERE correo = ? AND clave = ?';
+    connection.query(query, [correo, clave], (err, results) => {
         if (err) {
             console.error('Error al ejecutar la consulta: ingresar', err);
             return res.status(500).send('Error en el servidor');

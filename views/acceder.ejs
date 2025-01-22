@@ -6,16 +6,21 @@
 <% } %>
 <main>
     <br>
+    <script src="js/java.js"></script>
     
     <center>
         <form action="/login" method="POST">
             <div class="Dform">
                 <img src="img/logo-trans.png">
                     <br>
-                <input type="text" placeholder="Nombre" id="nombre" name="nombre" required>
+                <input type="text" placeholder="Correo" id="correo" name="correo" required>
                     <br> 
                     <br>
-                <input type="text" placeholder="Contraseña" id="clave" name="clave" required>
+                <input type="password" placeholder="Contraseña" id="clave" name="clave" required>
+                    <br>
+                <input type="checkbox" id="showPassword" onclick="togglePassword()"> Mostrar clave
+                    <br>
+
                 <!-- Botón de envío -->
                 <input type="image" src="img/botones/boton-ingreso.png" alt="Ingresar" class="Dboton">
                 <!-- Botón para registro (redirigir a otra página, por ejemplo) -->
