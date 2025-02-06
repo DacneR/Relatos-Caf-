@@ -1,7 +1,41 @@
 
 <main>
+    <script>document.addEventListener("DOMContentLoaded", () => {
+        const bannerText = document.querySelector(".banner-text");
+        bannerText.style.opacity = 0;
+        bannerText.style.transition = "opacity 2s ease-in-out";
+    
+        setTimeout(() => {
+        bannerText.style.opacity = 1;
+        }, 500); // Retraso para mostrar el texto
+    });
+    </script>
+      
+    <div class="banner-container">
+        <img src="img/banners/ban0.png" alt="Banner de café" class="banner-img">
+        <div class="banner-text">Descubre la magia de nuestro café</div>
+    </div>
+      
     <section class="hero">
+        
+
         <h2>Sobre Nosotros</h2>
         <p>En Relatos de Café, nos apasiona compartir las mejores historias detrás de cada taza de café.</p>
+
+        <!--contenido sobre preparaciones-->
+        <div class="Ddeter">
+            <h2>titulo</h2>
+            <table class="tablaD">
+                <tr>
+                    <td>
+                        <img class="imgD" src="" >
+                    </td>
+                    <td>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi dolor ipsam dolorum veritatis illo sapiente cumque quasi amet sunt nihil perspiciatis sequi omnis vero, voluptatem, nulla modi beatae. Harum, numquam!
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <!--fin contenido sobre preparaciones-->
     </section>
 </main>

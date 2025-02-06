@@ -18,6 +18,8 @@ document.addEventListener("DOMContentLoaded", function() {
     showSlides();
 });
 
+
+
 function showSlides() {
     let slides = document.getElementsByClassName("carousel-item");
     let dots = document.getElementsByClassName("dot");
